@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    <script>
+
+    function initMap() {
+      var myLatlng = new google.maps.LatLng(54.669651,25.240254);
+      var mapOptions = {
+        zoom: 4,
+        center: myLatlng
+      }
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          title:"Hello World!"
+      });
+
+      // To add the marker to the map, call setMap();
+      marker.setMap(map);
+    }
+
+    </script>
+  </head>
+
+
+  <body>
+    
+    <div id="header" class="row">   
+      <div id="menu">
+        <div id="imgwrap">
+          <img src="logo.png"></img>
+        </div>
+        <div id="menu-col">
+          <ul class="inline-list" data-tab>
+            <li class="tab-title"><a href="#autopr">Autoprekės</a></li>
+            <li class="tab-title"><a href="#motopr">Motoprekės</a></li>
+            <li class="tab-title"><a href="#dazym">Dažymo medžiagos</a></li>
+            <li class="tab-title"><a href="#kont">Kontaktai</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-content">
+      <div class="content" id="autopr">
+         <h4>
+          Variklių, mechaninių ir automatinių transmisijų alyvos;
+           <br />
+          Filtrai: alyvos, kuro, oro, salono oro;
+           <br />
+          Aušinimo, stabdžių, vairo stiprintuvo ir kiti skysčiai;
+           <br />
+          Tepalai, priedai, valikliai, revitalizantai;
+           <br />
+          Autokosmetika;
+           <br />
+          Akumuliatoriai;
+           <br />
+          Stabdžių sistemos dalys, aksesuarai ir dar daug visko...
+        </h4>
+
+      </div>
+      <div class="content" id="motopr">
+        <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+      </div>
+      <div class="content" id="dazym">
+        <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+      </div>
+      <div class="content" id="kont">
+        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+        <div id="map"></div>
+      </div>
+    </div>
+    
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
