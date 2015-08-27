@@ -105,7 +105,7 @@ gulp.task('dist:html', function() {
              .pipe(gulp.dest('.dist'));
 });
 
-gulp.task('deploy', function() {
+gulp.task('deploy', ['dist:build'], function() {
   return gulp.src('.dist/**/*')
              .pipe($.ghPages());
 });
@@ -115,19 +115,26 @@ gulp.task('dist:assets:clean', function() {
              .pipe($.clean());
 });
 
-gulp.task('build', function() {
+gulp.task('dist:copy', function() {
+  return gulp.src(['src/CNAME', 'src/robots.txt'])
+             .pipe(gulp.dest('.dist'));
+});
+
+gulp.task('build', function(cb) {
   return runSequence(
     'clean',
     ['images', 'styles', 'scripts', 'vendor'],
-    'html'
+    'html',
+    cb
   );
 });
 
-gulp.task('dist:build', function() {
+gulp.task('dist:build', function(cb) {
   return runSequence(
     'clean',
-    ['dist:images', 'styles', 'scripts', 'vendor'],
+    ['dist:images', 'styles', 'scripts', 'vendor', 'dist:copy'],
     'dist:html',
-    'dist:assets:clean'
+    'dist:assets:clean',
+    cb
   );
 })
